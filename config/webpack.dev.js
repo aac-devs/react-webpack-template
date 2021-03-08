@@ -1,7 +1,9 @@
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { HotModuleReplacementPlugin } = require("webpack");
+const { DefinePlugin } = require("webpack");
 const { default: merge } = require("webpack-merge");
 const common = require("./webpack.common");
+const path = require("path");
 
 /** @type {import('webpack').Configuration} */
 const devConfig = {
@@ -15,7 +17,16 @@ const devConfig = {
     historyApiFallback: true, // react-router-dom
   },
   target: "web",
-  plugins: [new HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()],
+  plugins: [
+    new HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin(),
+    new DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("development"),
+        PUBLIC_URL: JSON.stringify(path.resolve(__dirname, "../public")),
+      },
+    }),
+  ],
   devtool: "eval-source-map",
   module: {
     rules: [
