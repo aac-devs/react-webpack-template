@@ -11,6 +11,8 @@ const devConfig = {
     contentBase: "../dist",
     open: "chrome",
     hot: true,
+    clientLogLevel: "warn", // 'error' | 'silent'
+    historyApiFallback: true, // react-router-dom
   },
   target: "web",
   plugins: [new HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin()],
