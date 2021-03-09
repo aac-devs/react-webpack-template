@@ -25,8 +25,17 @@ const prodConfig = {
   module: {
     rules: [
       {
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
         test: /\.(css|sass|scss)$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "./",
+            },
+          },
+          "css-loader",
+          "sass-loader",
+        ],
       },
     ],
   },

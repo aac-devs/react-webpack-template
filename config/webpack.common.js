@@ -8,9 +8,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "[name].[contenthash].js",
-    publicPath: "/",    // react-router-dom
+    publicPath: "/", // react-router-dom
   },
-  mode: "production",
   module: {
     rules: [
       {
@@ -19,8 +18,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        type: "asset",
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(jpg|jpeg|png|gif|svg|webp)$/i,
+        use: "file-loader",
       },
     ],
   },
